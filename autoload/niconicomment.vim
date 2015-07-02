@@ -7,6 +7,9 @@ scriptencoding utf-8
 let s:save_cpo = &cpo
 set cpo&vim
 
+let s:V = vital#of('niconicomment')
+let s:Random = s:V.import('Random')
+
 function! niconicomment#go(...) abort
   " 可変長引数の処理〜
   "     <- いや直訳コメントとか書く必要ないでしょwwww
@@ -65,6 +68,7 @@ function! s:make_cline(lnum, scomment) abort
   let r.lnum = a:lnum
   let r.orig_line = getline(a:lnum)
   let [r.solToComment, r.commentToEol] = s:parse_comment(r.orig_line, a:scomment)
+  let r.commentToEol = repeat(' ', s:Random.range(0, 50)) . r.commentToEol
   let r.comment_len = strdisplaywidth(r.commentToEol)
   return r
 endfunction
