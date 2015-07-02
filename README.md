@@ -1,7 +1,7 @@
 :tv: Niconicomment.vim :tv:
 ===========================
 
-[![asciicast](https://asciinema.org/a/2jvsfknq8xhco9i3eta7rtgol.png)](https://asciinema.org/a/2jvsfknq8xhco9i3eta7rtgol)
+[![asciicast](https://asciinema.org/a/4fvdwap7bcxh7jwdebd1c2nv3.png)](https://asciinema.org/a/4fvdwap7bcxh7jwdebd1c2nv3)
 
 <blockquote class="twitter-tweet" lang="en"><p lang="ja" dir="ltr">ドワ社のソースコードのコメントって横に流れてくんでしょ</p>&mdash; Toshiyuki Takahashi (@tototoshi) <a href="https://twitter.com/tototoshi/status/616137924602519553">July 1, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
