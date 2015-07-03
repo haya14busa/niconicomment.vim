@@ -29,6 +29,7 @@ function! niconicomment#go(...) abort
   let max_len = max(map(copy(cls), 'v:val.comment_len'))
   " 少なくとも最初だけは実行する．ループであっても何か入力されたら終わってくれる
   let is_first = 1
+  let rt = reltime()
   while is_loop || is_first
     try
       " コメント流していく...!
@@ -42,8 +43,12 @@ function! niconicomment#go(...) abort
           call cl.show_line(i)
         endfor
         redraw
-        " 安らかに眠れ.....
-        execute 'sleep' printf('%sm', millsec)
+        let ds = float2nr(millsec - str2float(reltimestr(reltime(rt))) * 1000.0)
+        if ds > 0
+          " 安らかに眠れ.....
+          execute 'sleep' printf('%sm', ds)
+        endif
+        let rt = reltime()
       endfor
     finally
       " ちゃんとバッファを戻します!
