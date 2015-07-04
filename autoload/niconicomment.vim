@@ -230,6 +230,7 @@ let s:scomments = {
 \   'groovy': '//',
 \   'gtkrc': '#',
 \   'h': '//',
+\   'haskell': '--',
 \   'haml': '-#',
 \   'hb': '#',
 \   'hercules': '//',
@@ -410,7 +411,7 @@ let s:scomments = {
 \   'xmath': '#',
 \   'xpm2': '!',
 \   'z8a': ';',
-\   'zsh': '#',
+\   'zsh': '#'
 \ }
 
 
