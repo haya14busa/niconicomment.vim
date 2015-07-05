@@ -75,7 +75,7 @@ function! s:make_cline(lnum, scomment) abort
   let r.lnum = a:lnum
   let r.orig_line = getline(a:lnum)
   let [r.solToComment, r.commentToEol] = s:parse_comment(r.orig_line, a:scomment)
-  let r.commentToEol = repeat(' ', s:Random.range(0, 50)) . r.commentToEol
+  let r.commentToEol = repeat(' ', s:Random.range(0, winwidth(0))) . r.commentToEol
   let r.comment_len = strdisplaywidth(r.commentToEol)
   return r
 endfunction
