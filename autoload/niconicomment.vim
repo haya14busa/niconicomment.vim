@@ -103,7 +103,7 @@ endfunction
 function! s:get_comment_lines(scomment) abort
   let ffunc = printf('s:is_comment(v:val, "%s")', escape(a:scomment, '"'))
   let mfunc = printf('s:make_cline(v:val, "%s")', escape(a:scomment, '"'))
-  return map(filter(range(line('w0'), line('w$')), ffunc), mfunc)
+  return map(filter(range(line('w0'), line('w0') + winheight(0) - 1), ffunc), mfunc)
 endfunction
 
 function! s:comment_pattern(scomment) abort
