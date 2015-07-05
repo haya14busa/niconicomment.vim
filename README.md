@@ -27,6 +27,6 @@ Plug 'haya14busa/niconicomment.vim'
 #### Auto-run
 
 ```vim
-let g:niconicomment_auto = 0
-let g:niconicomment_loop = 0
+let g:niconicomment_auto = 1
+let g:niconicomment_loop = 1
 ```
