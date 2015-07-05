@@ -85,9 +85,13 @@ endfunction
 function! s:cline.make_line(i, ...) abort
   let winwidth = get(a:, 1, winwidth(0) - 5)
   let rest = winwidth - strdisplaywidth(self.solToComment)
-  let spaces = repeat(' ', rest - a:i)
-  let parse_pattern = a:i < rest ? printf('.*\%%<%sv', a:i) : printf('\%%>%sv.*', a:i - rest)
+  let parse_pattern = a:i < rest
+  \ ? printf('.*\%%<%sv', a:i)
+  \ : printf('\%%>%sv.*\%%<%sv', a:i - rest, a:i)
   let comment = matchstr(self.commentToEol, parse_pattern)
+  let clen = strdisplaywidth(comment)
+  let slen = a:i < clen ? rest - strdisplaywidth(comment) : rest - a:i
+  let spaces = repeat(' ', slen)
   let l = self.solToComment . (comment =~# '\m^\s*$' ? '' : spaces . comment)
   return l
 endfunction
