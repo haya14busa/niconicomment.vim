@@ -33,7 +33,7 @@ function! niconicomment#go(...) abort
   while is_loop || is_first
     try
       " コメント流していく...!
-      for i in range(max_len * 2)  " <- ちょっと雑すぎてウケるwwwwwww もっとしっかりしろよ...!wwwwwwwwwww
+      for i in range(winwidth(0) + max_len)  " <- ちょっと雑すぎてウケるwwwwwww もっとしっかりしろよ...!wwwwwwwwwww
         " 入力確認! getchar(1) だと入力が消費されず，このあと押されたとみなされるので便利
         if getchar(1)
           return
