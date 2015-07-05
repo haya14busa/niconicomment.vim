@@ -15,7 +15,7 @@ function! niconicomment#go(...) abort
   "     <- いや直訳コメントとか書く必要ないでしょwwww
   let winwidth = get(a:, 1, winwidth(0))
   let filetype = get(a:, 2, &filetype)
-  let is_loop = get(a:, 3, 0)
+  let is_loop = get(a:, 3, 1)
   let millsec = get(a:, 4, 30)
   " 一行コメントのコメント文字
   let scomment = s:get_oneline_scomment(filetype)
