@@ -30,6 +30,7 @@ function! niconicomment#go(...) abort
   " 少なくとも最初だけは実行する．ループであっても何か入力されたら終わってくれる
   let is_first = 1
   let rt = reltime()
+  let undo_file = s:save_undo()
   while is_loop || is_first
     try
       " コメント流していく...!
@@ -55,6 +56,7 @@ function! niconicomment#go(...) abort
       for cl in cls
         call cl.reset()
       endfor
+      call s:restore_undo(undo_file)
     endtry
     let is_first = 0
   endwhile
@@ -124,6 +126,32 @@ endfunction
 function! s:get_oneline_scomment(filetype)
   return get(s:scomments, a:filetype, '')
 endfunction
+
+" -- util
+
+function! s:is_cmdwin()
+  return bufname('%') ==# '[Command Line]'
+endfunction
+
+function! s:should_use_wundo()
+  return !s:is_cmdwin() && undotree().seq_last !=# 0
+endfunction
+
+function! s:save_undo() abort
+  let undo_file = tempname()
+  if s:should_use_wundo()
+    execute 'wundo' undo_file
+  endif
+  return undo_file
+endfunction
+
+function! s:restore_undo(undo_file) abort
+  if s:should_use_wundo() && filereadable(a:undo_file)
+    silent execute 'rundo' a:undo_file
+    call delete(a:undo_file)
+  endif
+endfunction
+
 
 " License: NEW BSD LICENSE
 " Licence URL: https://github.com/tyru/caw.vim/blob/bb24d3bb06bd1c193f2b7b161775989b833e0c8e/doc/caw.txt#L7
