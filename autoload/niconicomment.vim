@@ -24,14 +24,14 @@ function! niconicomment#go(...) abort
     echom 'Not supported filetype'
     return
   endif
-  " コメントがある行をゲット...!
-  let cls = s:get_comment_lines(scomment)
-  let max_len = max(map(copy(cls), 'v:val.comment_len'))
   " 少なくとも最初だけは実行する．ループであっても何か入力されたら終わってくれる
   let is_first = 1
   let rt = reltime()
   let undo_file = s:save_undo()
   while is_loop || is_first
+    " コメントがある行をゲット...!
+    let cls = s:get_comment_lines(scomment)
+    let max_len = max(map(copy(cls), 'v:val.comment_len'))
     try
       " コメント流していく...!
       for i in range(winwidth(0) + max_len)  " <- ちょっと雑すぎてウケるwwwwwww もっとしっかりしろよ...!wwwwwwwwwww
